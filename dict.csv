@@ -359,7 +359,7 @@ sancire:sancio:sanxi:sanctum,verb,"tmp"
  sanctissimus,part_pass_perf_sup,nom_sg_masc
  sanctissimas,part_pass_perf_sup,acc_pl_fem
  sanctarum,part_pass_perf,gen_pl_fem
- sancitum,part_pass_perf,('part_pass_perf', 'acc_sg_masc'),('part_pass_perf', 'acc_sg_neut'),('part_pass_perf', 'nom_sg_neut')
+ sancitum,part_pass_perf,acc_sg_masc,nom_sg_neut,acc_sg_neut
 sanctus:sancti,noun_masc,"tmp"
  sanctum,,acc_sg
  sancto,,abl_sg,dat_sg
@@ -25893,7 +25893,7 @@ arripere:arripio:arripui:arreptum,verb,"tmp"
  arreptis,part_pass_perf,dat_pl_fem,abl_pl_fem,abl_pl_masc,dat_pl_neut,dat_pl_masc,abl_pl_neut
  arripuere,,act_ind_perf_3pl
  arripite,,imp_act_pres_2pl
- arreptans,part_act_pres,('part_act_pres', 'nom_sg_neut'),('part_act_pres', 'nom_sg_fem'),('part_act_pres', 'acc_sg_neut'),('part_act_pres', 'nom_sg_masc')
+ arreptans,part_act_pres,nom_sg_neut,nom_sg_fem,acc_sg_neut,nom_sg_masc
  arrepto,part_pass_perf,dat_sg_neut,abl_sg_masc,dat_sg_masc,abl_sg_neut
  arripe,,imp_act_pres_2sg
  arriperent,,act_subj_imperf_3pl
@@ -31905,7 +31905,7 @@ comesse:comedo:comedi:comestus,verb,"tmp"
  comedemus,,act_ind_fut_1pl
  comedebat,,act_ind_imperf_3sg
  comederat,,act_ind_plup_3sg
- comesurus,part_act_fut,('part_act_fut', 'nom_sg_masc')
+ comesurus,part_act_fut,nom_sg_masc
  comedendum,part_pass_fut,acc_sg_masc,nom_sg_neut,acc_sg_neut
  comedentis,part_act_pres,gen_sg_neut,gen_sg_masc,gen_sg_fem
  comedente,part_act_pres,abl_sg_fem,abl_sg_masc,abl_sg_neut
@@ -33581,17 +33581,17 @@ scandalizare:scandalizo:scandalizavi:scandalizatum,verb,"tmp"
  scandalizem,,act_subj_pres_1sg
  scandalizastis,,act_ind_perf_2pl
 prodesse:prosum:profui:,verb,"tmp"
- prodest,,('verb', 'act_ind_pres_3sg')
+ prodest,,act_ind_pres_3sg
  profuerit,,act_ind_futperf_3sg,act_subj_perf_3sg
- proderit,,('verb', 'act_ind_fut_3sg')
- proderunt,,('verb', 'act_ind_fut_3pl')
- proderis,,('verb', 'act_ind_fut_2sg')
+ proderit,,act_ind_fut_3sg
+ proderunt,,act_ind_fut_3pl
+ proderis,,act_ind_fut_2sg
  prosint,,act_subj_pres_3pl
  profuturos,part_act_fut,acc_pl_masc
  profuit,,act_ind_perf_3sg
- prodero,,('verb', 'act_ind_fut_1sg')
+ prodero,,act_ind_fut_1sg
  profuerunt,,act_ind_perf_3pl
- prodesse,,('verb', 'inf_act_pres')
+ prodesse,,inf_act_pres
  prosit,,act_subj_pres_3sg
 scenopegia:scenopegiae,noun_fem,"tmp"
  scenopegia,,abl_sg,voc_sg,nom_sg
@@ -52746,7 +52746,7 @@ aggressus:aggressus,noun_masc,"tmp"
 aggredi:aggredior:aggressus sum:,verb,"tmp"
  aggressus,part_pass_perf,nom_sg_masc
  aggredi,,inf_pass_pres
- agressus,part_pass_perf,('part_pass_perf', 'nom_sg_masc')
+ agressus,part_pass_perf,nom_sg_masc
  aggressi,part_pass_perf,gen_sg_neut,gen_sg_masc,nom_pl_masc
  aggrediar,,pass_subj_pres_1sg,pass_ind_fut_1sg
 affinitas:affinitatis,noun_fem,"tmp"
