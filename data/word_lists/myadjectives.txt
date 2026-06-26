@@ -1,0 +1,79 @@
+abundare:abundo:abundavi:abundatum, act, abundanti
+abrumpere:abrumpo:abrupi:abruptum, pass, abrupti
+accipere:accipio:accepi:acceptum, pass, accepti
+adolescere:adolesco:adolui:adultum, act, adolescenti
+amare:amo:amavi:amatum, act, amanti
+ardere:ardeo:arsi:arsum, act, ardenti
+concidere:concido:concidi:concisum, pass, concisi
+colere:colo:colui:cultum, pass, culti
+desiderare:desidero:desideravi:desideratum, pass, desiderati
+differre:differo:distuli:dilatum, act, differenti
+diligere:diligo:dilexi:dilectum, pass, dilecti
+diligere:diligo:dilexi:dilectum, act, diligenti
+docere:doceo:docui:doctum, pass, docti
+experirier:experior:expertus sum:, act, experienti
+honorare:honoro:honoravi:honoratum, act, honorati
+impedire:impedio:impedii:impeditum, pass, impediti
+munire:munio:munii:munitum, pass, muniti
+nominare:nomino:nominavi:nominatum, pass, nominati
+opinari:opinor:opinatus sum:, pass, opinati
+pacare:paco:pacavi:pacatum, pass, pacati
+perficere:perficio:perfeci:perfectum, pass, perfecti
+posse:possum:potui:, act, potenti
+probare:probo:probavi:probatum, pass, probati
+progredi:progredior:progressus sum:, pass, progressi
+regere:rego:rexi:rectum, pass, recti
+remittere:remitto:remisi:remissum, pass, remissi
+sancire:sancio:sanxi:sanctum, pass, sancti
+sapere:sapio:sapui:, act, sapienti
+scelerare:scelero:sceleravi:sceleratum, pass, scelerati
+scire:scio:scii:scitum, act, scienti
+secernere:secerno:secrevi:secretum, pass, secreti
+valere:valeo:valui:valitum, act, valenti
+complacere:complaceo:complacitus sum:complacitum, pass, complaciti
+negligere:negligo:neglexi:neglectum, act, negligenti
+instare:insto:institi:, act, instanti
+acuere:acuo:acui:acutum, pass, acuti
+==================================================================
+benesonans, benesonant, 31
+carbasinus, carbasin, 1
+emptitius, emptiti, 1
+herniosus, hernios, 1
+illamentatus, illamentat, 1
+inargentatus, inargentat, 1
+inclytus, inclyt, 1
+indomabilis, indomabil, 2
+innocens, innocent, 31
+inops, inop, 31
+insipiens, insipient, 31
+locuples, locuplet, 31
+natalitius, nataliti, 1
+nugax, nugac, 31
+onustatus, onustat, 1
+pelliceus, pellice, 1
+pignoratus, pignorat, 1
+prudens, prudent, 31
+quadriduanus, quadriduan, 1
+spicatus, spicat, 1
+striatus, striat, 1
+adolescentulus, adolescentul, 1
+fusorius, fusori, 1
+myrrhatus, myrrhat, 1
+pistorius, pistori, 1
+nerviceus, nervice, 1
+dexter, dextr, 1
+ dexter, dexter, 1
+conternans, conternant, 31
+omnipotens, omnipotent, 31
+pedissequus, pedissequ, 1
+denigratus, denigrat, 1
+montuosus, montuos, 1
+ montosus, montos, 1
+arreptitius, arreptiti, 1
+quadriduanus, quadriduan, 1
+ quatriduanus, quatriduan, 1
+praegnans, praegnant, 31
+propalatus, propalat, 1
+probaticus, probatic, 1
+bubalus, bubal, 1
+dithalassus, dithalass, 1

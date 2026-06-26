@@ -1,0 +1,288 @@
+{{titulus2
+|OperaeTitulus= Vulgata Clementina
+|OperaeWikiPagina= Vulgata Clementina
+|SubTitulus= Threni, <br>id est Lamentationes Jeremiæ Prophetæ}}
+{{Liber
+|Ante= Prophetia Jeremiæ
+|AnteNomen= Vulgata Clementina/Prophetia Jeremiae
+|Post= Prophetia Baruch
+|PostNomen= Vulgata Clementina/Prophetia Baruch
+}}
+
+==Caput 1==
+
+<sup>1</sup> '''''Prologus.''''' Et factum est, postquam in captivitatem redactus est Israël, et Jerusalem deserta est, sedit Jeremias propheta flens, et planxit lamentatione hac in Jerusalem : et amaro animo suspirans et ejulans, dixit :
+
+'''''Aleph.''''' Quomodo sedet sola civitas plena populo ! Facta est quasi vidua domina gentium ; princeps provinciarum facta est sub tributo.
+
+<sup>2</sup> '''''Beth.''''' Plorans ploravit in nocte, et lacrimæ ejus in maxillis ejus : non est qui consoletur eam ex omnibus caris ejus ; omnes amici ejus spreverunt eam, et facti sunt ei inimici.
+
+<sup>3</sup> '''''Ghimel.''''' Migravit Judas propter afflictionem, et multitudinem servitutis ; habitavit inter gentes, nec invenit requiem : omnes persecutores ejus apprehenderunt eam inter angustias.
+
+<sup>4</sup> '''''Daleth.''''' Viæ Sion lugent, eo quod non sint qui veniant ad solemnitatem : omnes portæ ejus destructæ, sacerdotes ejus gementes ; virgines ejus squalidæ, et ipsa oppressa amaritudine.
+
+<sup>5</sup> '''''He.''''' Facti sunt hostes ejus in capite ; inimici ejus locupletati sunt : quia Dominus locutus est super eam propter multitudinem iniquitatum ejus. Parvuli ejus ducti sunt in captivitatem ante faciem tribulantis.
+
+<sup>6</sup> '''''Vau.''''' Et egressus est a filia Sion omnis decor ejus ; facti sunt principes ejus velut arietes non invenientes pascua, et abierunt absque fortitudine ante faciem subsequentis.
+
+<sup>7</sup> '''''Zain.''''' Recordata est Jerusalem dierum afflictionis suæ, et prævaricationis, omnium desiderabilium suorum, quæ habuerat a diebus antiquis, cum caderet populus ejus in manu hostili, et non esset auxiliator : viderunt eam hostes, et deriserunt sabbata ejus.
+
+<sup>8</sup> '''''Heth.''''' Peccatum peccavit Jerusalem, propterea instabilis facta est ; omnes qui glorificabant eam spreverunt illam, quia viderunt ignominiam ejus : ipsa autem gemens conversa est retrorsum.
+
+<sup>9</sup> '''''Teth.''''' Sordes ejus in pedibus ejus, nec recordata est finis sui ; deposita est vehementer, non habens consolatorem. Vide, Domine, afflictionem meam, quoniam erectus est inimicus.
+
+<sup>10</sup> '''''Jod.''''' Manum suam misit hostis ad omnia desiderabilia ejus, quia vidit gentes ingressas sanctuarium suum, de quibus præceperas ne intrarent in ecclesiam tuam.
+
+<sup>11</sup> '''''Caph.''''' Omnis populus ejus gemens, et quærens panem ; dederunt pretiosa quæque pro cibo ad refocillandam animam. Vide, Domine, et considera quoniam facta sum vilis !
+
+<sup>12</sup> '''''Lamed.''''' O vos omnes qui transitis per viam, attendite, et videte si est dolor sicut dolor meus ! quoniam vindemiavit me, ut locutus est Dominus, in die iræ furoris sui.
+
+<sup>13</sup> '''''Mem.''''' De excelso misit ignem in ossibus meis, et erudivit me : expandit rete pedibus meis, convertit me retrorsum ; posuit me desolatam, tota die mœrore confectam.
+
+<sup>14</sup> '''''Nun.''''' Vigilavit jugum iniquitatum mearum ; in manu ejus convolutæ sunt, et impositæ collo meo. Infirmata est virtus mea : dedit me Dominus in manu de qua non potero surgere.
+
+<sup>15</sup> '''''Samech.''''' Abstulit omnes magnificos meos Dominus de medio mei ; vocavit adversum me tempus ut contereret electos meos. Torcular calcavit Dominus virgini filiæ Juda.
+
+<sup>16</sup> '''''Ain.''''' Idcirco ego plorans, et oculus meus deducens aquas, quia longe factus est a me consolator, convertens animam meam. Facti sunt filii mei perditi, quoniam invaluit inimicus.
+
+<sup>17</sup> '''''Phe.''''' Expandit Sion manus suas ; non est qui consoletur eam. Mandavit Dominus adversum Jacob in circuitu ejus hostes ejus ; facta est Jerusalem quasi polluta menstruis inter eos.
+
+<sup>18</sup> '''''Sade.''''' Justus est Dominus, quia os ejus ad iracundiam provocavi. Audite, obsecro, universi populi, et videte dolorem meum : virgines meæ et juvenes mei abierunt in captivitatem.
+
+<sup>19</sup> '''''Coph.''''' Vocavi amicos meos, et ipsi deceperunt me ; sacerdotes mei et senes mei in urbe consumpti sunt, quia quæsierunt cibum sibi ut refocillarent animam suam.
+
+<sup>20</sup> '''''Res.''''' Vide, Domine, quoniam tribulor : conturbatus est venter meus, subversum est cor meum in memetipsa, quoniam amaritudine plena sum. Foris interfecit gladius, et domi mors similis est.
+
+<sup>21</sup> '''''Sin.''''' Audierunt quia ingemisco ego, et non est qui consoletur me ; omnes inimici mei audierunt malum meum, lætati sunt quoniam tu fecisti : adduxisti diem consolationis, et fient similes mei.
+
+<sup>22</sup> '''''Thau.''''' Ingrediatur omne malum eorum coram te : et vindemia eos, sicut vindemiasti me propter omnes iniquitates meas : multi enim gemitus mei, et cor meum mœrens.
+
+==Caput 2==
+
+<sup>1</sup> '''''Aleph.''''' Quomodo obtexit caligine in furore suo Dominus filiam Sion ; projecit de cælo in terram inclytam Israël, et non est recordatus scabelli pedum suorum in die furoris sui !
+
+<sup>2</sup> '''''Beth.''''' Præcipitavit Dominus, nec pepercit omnia speciosa Jacob : destruxit in furore suo munitiones virginis Juda, et dejecit in terram ; polluit regnum et principes ejus.
+
+<sup>3</sup> '''''Ghimel.''''' Confregit in ira furoris sui omne cornu Israël ; avertit retrorsum dexteram suam a facie inimici, et succendit in Jacob quasi ignem flammæ devorantis in gyro.
+
+<sup>4</sup> '''''Daleth.''''' Tetendit arcum suum quasi inimicus, firmavit dexteram suam quasi hostis, et occidit omne quod pulchrum erat visu in tabernaculo filiæ Sion ; effudit quasi ignem indignationem suam.
+
+<sup>5</sup> '''''He.''''' Factus est Dominus velut inimicus, præcipitavit Israël : præcipitavit omnia mœnia ejus, dissipavit munitiones ejus, et replevit in filia Juda humiliatum et humiliatam.
+
+<sup>6</sup> '''''Vau.''''' Et dissipavit quasi hortum tentorium suum ; demolitus est tabernaculum suum. Oblivioni tradidit Dominus in Sion festivitatem et sabbatum ; et in opprobrium, et in indignationem furoris sui, regem et sacerdotem.
+
+<sup>7</sup> '''''Zain.''''' Repulit Dominus altare suum ; maledixit sanctificationi suæ : tradidit in manu inimici muros turrium ejus. Vocem dederunt in domo Domini sicut in die solemni.
+
+<sup>8</sup> '''''Heth.''''' Cogitavit Dominus dissipare murum filiæ Sion ; tetendit funiculum suum, et non avertit manum suam a perditione : luxitque antemurale, et murus pariter dissipatus est.
+
+<sup>9</sup> '''''Teth.''''' Defixæ sunt in terra portæ ejus, perdidit et contrivit vectes ejus ; regem ejus et principes ejus in gentibus : non est lex, et prophetæ ejus non invenerunt visionem a Domino.
+
+<sup>10</sup> '''''Jod.''''' Sederunt in terra, conticuerunt senes filiæ Sion ; consperserunt cinere capita sua, accincti sunt ciliciis : abjecerunt in terram capita sua virgines Jerusalem.
+
+<sup>11</sup> '''''Caph.''''' Defecerunt præ lacrimis oculi mei, conturbata sunt viscera mea ; effusum est in terra jecur meum super contritione filiæ populi mei, cum deficeret parvulus et lactens in plateis oppidi.
+
+<sup>12</sup> '''''Lamed.''''' Matribus suis dixerunt : Ubi est triticum et vinum ? cum deficerent quasi vulnerati in plateis civitatis, cum exhalarent animas suas in sinu matrum suarum.
+
+<sup>13</sup> '''''Mem.''''' Cui comparabo te, vel cui assimilabo te, filia Jerusalem ? cui exæquabo te, et consolabor te, virgo, filia Sion ? magna est enim velut mare contritio tua : quis medebitur tui ?
+
+<sup>14</sup> '''''Nun.''''' Prophetæ tui viderunt tibi falsa et stulta ; nec aperiebant iniquitatem tuam, ut te ad pœnitentiam provocarent ; viderunt autem tibi assumptiones falsas, et ejectiones.
+
+<sup>15</sup> '''''Samech.''''' Plauserunt super te manibus omnes transeuntes per viam ; sibilaverunt et moverunt caput suum super filiam Jerusalem : Hæccine est urbs, dicentes, perfecti decoris, gaudium universæ terræ ? 
+
+<sup>16</sup> '''''Phe.''''' Aperuerunt super te os suum omnes inimici tui : sibilaverunt, et fremuerunt dentibus, et dixerunt : Devorabimus : en ista est dies quam exspectabamus ; invenimus, vidimus.
+
+<sup>17</sup> '''''Ain.''''' Fecit Dominus quæ cogitavit ; complevit sermonem suum, quem præceperat a diebus antiquis : destruxit, et non pepercit, et lætificavit super te inimicum, et exaltavit cornu hostium tuorum. 
+
+<sup>18</sup> '''''Sade.''''' Clamavit cor eorum ad Dominum super muros filiæ Sion : Deduc quasi torrentem lacrimas per diem et noctem ; non des requiem tibi, neque taceat pupilla oculi tui.
+
+<sup>19</sup> '''''Coph.''''' Consurge, lauda in nocte, in principio vigiliarum ; effunde sicut aquam cor tuum ante conspectum Domini : leva ad eum manus tuas pro anima parvulorum tuorum, qui defecerunt in fame in capite omnium compitorum.
+
+<sup>20</sup> '''''Res.''''' Vide, Domine, et considera quem vindemiaveris ita. Ergone comedent mulieres fructum suum, parvulos ad mensuram palmæ ? si occiditur in sanctuario Domini sacerdos et propheta ?
+
+<sup>21</sup> '''''Sin.''''' Jacuerunt in terra foris puer et senex ; virgines meæ et juvenes mei ceciderunt in gladio : interfecisti in die furoris tui, percussisti, nec misertus es.
+
+<sup>22</sup> '''''Thau.''''' Vocasti quasi ad diem solemnem, qui terrerent me de circuitu ; et non fuit in die furoris Domini qui effugeret, et relinqueretur : quos educavi et enutrivi, inimicus meus consumpsit eos.
+
+==Caput 3==
+
+<sup>1</sup> '''''Aleph.''''' Ego vir videns paupertatem meam in virga indignationis ejus.
+
+<sup>2</sup> '''''Aleph.''''' Me minavit, et adduxit in tenebras, et non in lucem.
+
+<sup>3</sup> '''''Aleph.''''' Tantum in me vertit et convertit manum suam tota die.
+
+<sup>4</sup> '''''Beth.''''' Vetustam fecit pellem meam et carnem meam ; contrivit ossa mea.
+
+<sup>5</sup> '''''Beth.''''' Ædificavit in gyro meo, et circumdedit me felle et labore.
+
+<sup>6</sup> '''''Beth.''''' In tenebrosis collocavit me, quasi mortuos sempiternos.
+
+<sup>7</sup> '''''Ghimel.''''' Circumædificavit adversum me, ut non egrediar ; aggravavit compedem meum.
+
+<sup>8</sup> '''''Ghimel.''''' Sed et cum clamavero, et rogavero, exclusit orationem meam.
+
+<sup>9</sup> '''''Ghimel.''''' Conclusit vias meas lapidibus quadris ; semitas meas subvertit.
+
+<sup>10</sup> '''''Daleth.''''' Ursus insidians factus est mihi, leo in absconditis.
+
+<sup>11</sup> '''''Daleth.''''' Semitas meas subvertit, et confregit me ; posuit me desolatam.
+
+<sup>12</sup> '''''Daleth.''''' Tetendit arcum suum, et posuit me quasi signum ad sagittam.
+
+<sup>13</sup> '''''He.''''' Misit in renibus meis filias pharetræ suæ.
+
+<sup>14</sup> '''''He.''''' Factus sum in derisum omni populo meo, canticum eorum tota die.
+
+<sup>15</sup> '''''He.''''' Replevit me amaritudinibus ; inebriavit me absinthio.
+
+<sup>16</sup> '''''Vau.''''' Et fregit ad numerum dentes meos ; cibavit me cinere.
+
+<sup>17</sup> '''''Vau.''''' Et repulsa est a pace anima mea ; oblitus sum bonorum. 
+
+<sup>18</sup> '''''Vau.''''' Et dixi : Periit finis meus, et spes mea a Domino. 
+
+<sup>19</sup> '''''Zain.''''' Recordare paupertatis, et transgressionis meæ, absinthii et fellis. 
+
+<sup>20</sup> '''''Zain.''''' Memoria memor ero, et tabescet in me anima mea. 
+
+<sup>21</sup> '''''Zain.''''' Hæc recolens in corde meo, ideo sperabo. 
+
+<sup>22</sup> '''''Heth.''''' Misericordiæ Domini, quia non sumus consumpti ; quia non defecerunt miserationes ejus. 
+
+<sup>23</sup> '''''Heth.''''' Novi diluculo, multa est fides tua. 
+
+<sup>24</sup> '''''Heth.''''' Pars mea Dominus, dixit anima mea ; propterea exspectabo eum. 
+
+<sup>25</sup> '''''Teth.''''' Bonus est Dominus sperantibus in eum, animæ quærenti illum. 
+
+<sup>26</sup> '''''Teth.''''' Bonum est præstolari cum silentio salutare Dei. 
+
+<sup>27</sup> '''''Teth.''''' Bonum est viro cum portaverit jugum ab adolescentia sua. 
+
+<sup>28</sup> '''''Jod.''''' Sedebit solitarius, et tacebit, quia levavit super se. 
+
+<sup>29</sup> '''''Jod.''''' Ponet in pulvere os suum, si forte sit spes. 
+
+<sup>30</sup> '''''Jod.''''' Dabit percutienti se maxillam : saturabitur opprobriis. 
+
+<sup>31</sup> '''''Caph.''''' Quia non repellet in sempiternum Dominus. 
+
+<sup>32</sup> '''''Caph.''''' Quia si abjecit, et miserebitur, secundum multitudinem misericordiarum suarum. 
+
+<sup>33</sup> '''''Caph.''''' Non enim humiliavit ex corde suo et abjecit filios hominum. 
+
+<sup>34</sup> '''''Lamed.''''' Ut conteret sub pedibus suis omnes vinctos terræ. 
+
+<sup>35</sup> '''''Lamed.''''' Ut declinaret judicium viri in conspectu vultus Altissimi. 
+
+<sup>36</sup> '''''Lamed.''''' Ut perverteret hominem in judicio suo ; Dominus ignoravit. 
+
+<sup>37</sup> '''''Mem.''''' Quis est iste qui dixit ut fieret, Domino non jubente ? 
+
+<sup>38</sup> '''''Mem.''''' Ex ore Altissimi non egredientur nec mala nec bona ? 
+
+<sup>39</sup> '''''Mem.''''' Quid murmuravit homo vivens, vir pro peccatis suis ? 
+
+<sup>40</sup> '''''Nun.''''' Scrutemur vias nostras, et quæramus, et revertamur ad Dominum. 
+
+<sup>41</sup> '''''Nun.''''' Levemus corda nostra cum manibus ad Dominum in cælos. 
+
+<sup>42</sup> '''''Nun.''''' Nos inique egimus, et ad iracundiam provocavimus ; idcirco tu inexorabilis es. 
+
+<sup>43</sup> '''''Samech.''''' Operuisti in furore, et percussisti nos ; occidisti, nec pepercisti. 
+
+<sup>44</sup> '''''Samech.''''' Opposuisti nubem tibi, ne transeat oratio. 
+
+<sup>45</sup> '''''Samech.''''' Eradicationem et abjectionem posuisti me in medio populorum. 
+
+<sup>46</sup> '''''Phe.''''' Aperuerunt super nos os suum omnes inimici. 
+
+<sup>47</sup> '''''Phe.''''' Formido et laqueus facta est nobis vaticinatio, et contritio. 
+
+<sup>48</sup> '''''Phe.''''' Divisiones aquarum deduxit oculus meus, in contritione filiæ populi mei. 
+
+<sup>49</sup> '''''Ain.''''' Oculus meus afflictus est, nec tacuit, eo quod non esset requies. 
+
+<sup>50</sup> '''''Ain.''''' Donec respiceret et videret Dominus de cælis. 
+
+<sup>51</sup> '''''Ain.''''' Oculus meus deprædatus est animam meam in cunctis filiabus urbis meæ. 
+
+<sup>52</sup> '''''Sade.''''' Venatione ceperunt me quasi avem inimici mei gratis. 
+
+<sup>53</sup> '''''Sade.''''' Lapsa est in lacum vita mea, et posuerunt lapidem super me. 
+
+<sup>54</sup> '''''Sade.''''' Inundaverunt aquæ super caput meum ; dixi : Perii. 
+
+<sup>55</sup> '''''Coph.''''' Invocavi nomen tuum, Domine, de lacu novissimo. 
+
+<sup>56</sup> '''''Coph.''''' Vocem meam audisti ; ne avertas aurem tuam a singultu meo et clamoribus. 
+
+<sup>57</sup> '''''Coph.''''' Appropinquasti in die quando invocavi te ; dixisti : Ne timeas. 
+
+<sup>58</sup> '''''Res.''''' Judicasti, Domine, causam animæ meæ, redemptor vitæ meæ. 
+
+<sup>59</sup> '''''Res.''''' Vidisti, Domine, iniquitatem illorum adversum me : judica judicium meum. 
+
+<sup>60</sup> '''''Res.''''' Vidisti omnem furorem, universas cogitationes eorum adversum me. 
+
+<sup>61</sup> '''''Sin.''''' Audisti opprobrium eorum, Domine, omnes cogitationes eorum adversum me. 
+
+<sup>62</sup> '''''Sin.''''' Labia insurgentium mihi, et meditationes eorum adversum me tota die. 
+
+<sup>63</sup> '''''Sin.''''' Sessionem eorum et resurrectionem eorum vide ; ego sum psalmus eorum. 
+
+<sup>64</sup> '''''Thau.''''' Reddes eis vicem, Domine, juxta opera manuum suarum. 
+
+<sup>65</sup> '''''Thau.''''' Dabis eis scutum cordis, laborem tuum. 
+
+<sup>66</sup> '''''Thau.''''' Persequeris in furore, et conteres eos sub cælis, Domine.
+
+==Caput 4==
+
+<sup>1</sup> '''''Aleph.''''' Quomodo obscuratum est aurum, mutatus est color optimus ! dispersi sunt lapides sanctuarii in capite omnium platearum ! 
+
+<sup>2</sup> '''''Beth.''''' Filii Sion inclyti, et amicti auro primo : quomodo reputati sunt in vasa testea, opus manuum figuli ! 
+
+<sup>3</sup> '''''Ghimel.''''' Sed et lamiæ nudaverunt mammam, lactaverunt catulos suos : filia populi mei crudelis quasi struthio in deserto. 
+
+<sup>4</sup> '''''Daleth.''''' Adhæsit lingua lactentis ad palatum ejus in siti ; parvuli petierunt panem, et non erat qui frangeret eis. 
+
+<sup>5</sup> '''''He.''''' Qui vescebantur voluptuose, interierunt in viis ; qui nutriebantur in croceis, amplexati sunt stercora. 
+
+<sup>6</sup> '''''Vau.''''' Et major effecta est iniquitas filiæ populi mei peccato Sodomorum, quæ subversa est in momento, et non ceperunt in ea manus. 
+
+<sup>7</sup> '''''Zain.''''' Candidiores Nazaræi ejus nive, nitidiores lacte, rubicundiores ebore antiquo, sapphiro pulchriores. 
+
+<sup>8</sup> '''''Heth.''''' Denigrata est super carbones facies eorum et non sunt cogniti in plateis ; adhæsit cutis eorum ossibus : aruit, et facta est quasi lignum. 
+
+<sup>9</sup> '''''Teth.''''' Melius fuit occisis gladio quam interfectis fame, quoniam isti extabuerunt consumpti a sterilitate terræ. 
+
+<sup>10</sup> '''''Jod.''''' Manus mulierum misericordium coxerunt filios suos ; facti sunt cibus earum in contritione filiæ populi mei. 
+
+<sup>11</sup> '''''Caph.''''' Complevit Dominus furorem suum, effudit iram indignationis suæ : et succendit ignem in Sion, et devoravit fundamenta ejus. 
+
+<sup>12</sup> '''''Lamed.''''' Non crediderunt reges terræ, et universi habitatores orbis, quoniam ingrederetur hostis et inimicus per portas Jerusalem. 
+
+<sup>13</sup> '''''Mem.''''' Propter peccata prophetarum ejus, et iniquitates sacerdotum ejus, qui effuderunt in medio ejus sanguinem justorum. 
+
+<sup>14</sup> '''''Nun.''''' Erraverunt cæci in plateis, polluti sunt in sanguine ; cumque non possent, tenuerunt lacinias suas. 
+
+<sup>15</sup> '''''Samech.''''' Recedite polluti, clamaverunt eis ; recedite, abite, nolite tangere : jurgati quippe sunt, et commoti dixerunt inter gentes : Non addet ultra ut habitet in eis. 
+
+<sup>16</sup> '''''Phe.''''' Facies Domini divisit eos, non addet ut respiciat eos ; facies sacerdotum non erubuerunt, neque senum miserti sunt. 
+
+<sup>17</sup> '''''Ain.''''' Cum adhuc subsisteremus, defecerunt oculi nostri ad auxilium nostrum vanum ; cum respiceremus attenti ad gentem quæ salvare non poterat. 
+
+<sup>18</sup> '''''Sade.''''' Lubricaverunt vestigia nostra in itinere platearum nostrarum ; appropinquavit finis noster, completi sunt dies nostri, quia venit finis noster. 
+
+<sup>19</sup> '''''Coph.''''' Velociores fuerunt persecutores nostri aquilis cæli ; super montes persecuti sunt nos, in deserto insidiati sunt nobis. 
+
+<sup>20</sup> '''''Res.''''' Spiritus oris nostri, christus Dominus, captus est in peccatis nostris, cui diximus : In umbra tua vivemus in gentibus. 
+
+<sup>21</sup> '''''Sin.''''' Gaude et lætare, filia Edom, quæ habitas in terra Hus ! ad te quoque perveniet calix : inebriaberis, atque nudaberis. 
+
+<sup>22</sup> '''''Thau.''''' Completa est iniquitas tua, filia Sion : non addet ultra ut transmigret te. Visitavit iniquitatem tuam, filia Edom ; discooperuit peccata tua.
+
+==Caput 5==
+
+<sup>1</sup> '''''Oratio Jeremiæ prophetæ.''''' Recordare, Domine, quid acciderit nobis ; intuere et respice opprobrium nostrum. <sup>2</sup> Hæreditas nostra versa est ad alienos, domus nostræ ad extraneos. <sup>3</sup> Pupilli facti sumus absque patre, matres nostræ quasi viduæ. <sup>4</sup> Aquam nostram pecunia bibimus ; ligna nostra pretio comparavimus. <sup>5</sup> Cervicibus nostris minabamur, lassis non dabatur requies. <sup>6</sup> Ægypto dedimus manum et Assyriis, ut saturaremur pane. <sup>7</sup> Patres nostri peccaverunt, et non sunt : et nos iniquitates eorum portavimus. <sup>8</sup> Servi dominati sunt nostri : non fuit qui redimeret de manu eorum. <sup>9</sup> In animabus nostris afferebamus panem nobis, a facie gladii in deserto. <sup>10</sup> Pellis nostra quasi clibanus exusta est, a facie tempestatum famis. <sup>11</sup> Mulieres in Sion humiliaverunt, et virgines in civitatibus Juda. <sup>12</sup> Principes manu suspensi sunt ; facies senum non erubuerunt. <sup>13</sup> Adolescentibus impudice abusi sunt, et pueri in ligno corruerunt. <sup>14</sup> Senes defecerunt de portis, juvenes de choro psallentium. <sup>15</sup> Defecit gaudium cordis nostri ; versus est in luctum chorus noster. <sup>16</sup> Cecidit corona capitis nostri : væ nobis, quia peccavimus ! <sup>17</sup> Propterea mœstum factum est cor nostrum ; ideo contenebrati sunt oculi nostri, <sup>18</sup> propter montem Sion quia disperiit ; vulpes ambulaverunt in eo. <sup>19</sup> Tu autem, Domine, in æternum permanebis, solium tuum in generationem et generationem. <sup>20</sup> Quare in perpetuum oblivisceris nostri, derelinques nos in longitudine dierum ? <sup>21</sup> Converte nos, Domine, ad te, et convertemur ; innova dies nostros, sicut a principio. <sup>22</sup> Sed projiciens repulisti nos : iratus es contra nos vehementer.
