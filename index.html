@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Latin Dictionary</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #ffffff;
+      --surface: #f8f8f8;
+      --border: #e5e5e5;
+      --text: #1a1a1a;
+      --text-secondary: #6b6b6b;
+      --accent: #2563eb;
+      --accent-light: #eff6ff;
+      --radius: 8px;
+      --font: 'Inter', system-ui, sans-serif;
+    }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 0 16px 80px;
+    }
+
+    /* ── Header ── */
+    header {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 52px 0 40px;
+    }
+    header h1 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: var(--text);
+    }
+    header p {
+      margin-top: 4px;
+      font-size: 0.8125rem;
+      color: var(--text-secondary);
+    }
+
+    /* ── Search ── */
+    .search-wrap {
+      max-width: 680px;
+      margin: 0 auto 40px;
+      position: relative;
+    }
+    .search-wrap input {
+      width: 100%;
+      padding: 13px 48px 13px 16px;
+      font-family: var(--font);
+      font-size: 1rem;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--bg);
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    .search-wrap input::placeholder { color: #b0b0b0; }
+    .search-wrap input:focus { border-color: var(--accent); }
+    .search-wrap .clear-btn {
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #b0b0b0;
+      font-size: 1rem;
+      line-height: 1;
+      display: none;
+      padding: 2px;
+    }
+    .search-wrap .clear-btn:hover { color: var(--text); }
+
+    /* ── Status / hint ── */
+    .status {
+      max-width: 680px;
+      margin: 0 auto;
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      min-height: 24px;
+    }
+
+    /* ── Entry ── */
+    #entry {
+      max-width: 680px;
+      margin: 28px auto 0;
+      display: none;
+      animation: slideUp 0.2s ease both;
+    }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      #entry { animation: none; }
+    }
+
+    .entry-head {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+    .entry-lemma {
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
+    .entry-pos {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-light);
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+    .entry-def {
+      font-size: 0.9375rem;
+      color: var(--text);
+      line-height: 1.6;
+      margin-bottom: 28px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ── Table section ── */
+    .forms-title {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: 12px;
+    }
+
+    .forms-table-wrap {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.875rem;
+    }
+    th {
+      text-align: left;
+      padding: 8px 12px;
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+    th:first-child { border-radius: 6px 0 0 0; }
+    th:last-child  { border-radius: 0 6px 0 0; }
+    td {
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text);
+      vertical-align: top;
+    }
+    td:first-child { color: var(--text-secondary); font-weight: 500; white-space: nowrap; }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: var(--surface); }
+
+    /* Verb principal parts row */
+    .principal-parts {
+      margin-bottom: 20px;
+      font-size: 0.875rem;
+    }
+    .principal-parts span.pp-label {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-right: 8px;
+    }
+
+    /* Adj gender tabs */
+    .gender-tabs {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 16px;
+    }
+    .gender-tab {
+      padding: 5px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 6px;
+      background: var(--bg);
+      font-family: var(--font);
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.12s;
+    }
+    .gender-tab.active, .gender-tab:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-light);
+    }
+
+    /* ── Loading / error ── */
+    #loader {
+      max-width: 680px;
+      margin: 60px auto 0;
+      text-align: center;
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+    }
+
+    /* ── Footer ── */
+    footer {
+      max-width: 680px;
+      margin: 60px auto 0;
+      font-size: 0.75rem;
+      color: #c0c0c0;
+      border-top: 1px solid var(--border);
+      padding-top: 16px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Latin Dictionary</h1>
+  <p>Search by any form — nominative, genitive, conjugated — or by lemma.</p>
+</header>
+
+<div class="search-wrap">
+  <input type="text" id="search" placeholder="e.g. amor, amare, puella…" autocomplete="off" spellcheck="false" />
+  <button class="clear-btn" id="clearBtn" aria-label="Clear search">✕</button>
+</div>
+
+<div class="status" id="status">Loading dictionary…</div>
+
+<div id="loader">Loading dictionary data…</div>
+
+<div id="entry" role="region" aria-live="polite"></div>
+
+<footer>Data loaded from <code id="dataSource">dictionary.csv</code></footer>
+
+<script>
+/* ─────────────────────────────────────────────
+   CONFIG — point this at your CSV on GitHub Pages
+   ───────────────────────────────────────────── */
+const CSV_URL = 'dictionary.csv'; // relative path; change to full URL if needed
+
+/* ─────────────────────────────────────────────
+   CSV EXPECTED STRUCTURE
+   ───────────────────────────────────────────── */
+/*
+  NOUNS — columns:
+    lemma, pos, definition,
+    nom_sg, gen_sg, dat_sg, acc_sg, abl_sg, voc_sg,
+    nom_pl, gen_pl, dat_pl, acc_pl, abl_pl, voc_pl
+
+  ADJECTIVES — columns:
+    lemma, pos, definition,
+    m_nom_sg, m_gen_sg, m_dat_sg, m_acc_sg, m_abl_sg,
+    m_nom_pl, m_gen_pl, m_dat_pl, m_acc_pl, m_abl_pl,
+    f_nom_sg, f_gen_sg, f_dat_sg, f_acc_sg, f_abl_sg,
+    f_nom_pl, f_gen_pl, f_dat_pl, f_acc_pl, f_abl_pl,
+    n_nom_sg, n_gen_sg, n_dat_sg, n_acc_sg, n_abl_sg,
+    n_nom_pl, n_gen_pl, n_dat_pl, n_acc_pl, n_abl_pl
+
+  VERBS — columns:
+    lemma, pos, definition,
+    pp1 (1sg pres ind act), pp2 (pres inf), pp3 (1sg perf ind act), pp4 (supine/PPP),
+    pres_1sg, pres_2sg, pres_3sg, pres_1pl, pres_2pl, pres_3pl,
+    imperf_1sg, imperf_2sg, imperf_3sg, imperf_1pl, imperf_2pl, imperf_3pl,
+    fut_1sg, fut_2sg, fut_3sg, fut_1pl, fut_2pl, fut_3pl,
+    perf_1sg, perf_2sg, perf_3sg, perf_1pl, perf_2pl, perf_3pl
+*/
+
+/* ─────────────────────────────────────────────
+   SAMPLE DATA (used when CSV_URL fails to load,
+   e.g. running locally without a server)
+   ───────────────────────────────────────────── */
+const SAMPLE_CSV = `lemma,pos,definition,nom_sg,gen_sg,dat_sg,acc_sg,abl_sg,voc_sg,nom_pl,gen_pl,dat_pl,acc_pl,abl_pl,voc_pl,m_nom_sg,m_gen_sg,m_dat_sg,m_acc_sg,m_abl_sg,m_nom_pl,m_gen_pl,m_dat_pl,m_acc_pl,m_abl_pl,f_nom_sg,f_gen_sg,f_dat_sg,f_acc_sg,f_abl_sg,f_nom_pl,f_gen_pl,f_dat_pl,f_acc_pl,f_abl_pl,n_nom_sg,n_gen_sg,n_dat_sg,n_acc_sg,n_abl_sg,n_nom_pl,n_gen_pl,n_dat_pl,n_acc_pl,n_abl_pl,pp1,pp2,pp3,pp4,pres_1sg,pres_2sg,pres_3sg,pres_1pl,pres_2pl,pres_3pl,imperf_1sg,imperf_2sg,imperf_3sg,imperf_1pl,imperf_2pl,imperf_3pl,fut_1sg,fut_2sg,fut_3sg,fut_1pl,fut_2pl,fut_3pl,perf_1sg,perf_2sg,perf_3sg,perf_1pl,perf_2pl,perf_3pl
+puella,noun,girl; maiden,puella,puellae,puellae,puellam,puella,puella,puellae,puellarum,puellis,puellas,puellis,puellae,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+amor,noun,love; desire; passion,amor,amoris,amori,amorem,amore,amor,amores,amorum,amoribus,amores,amoribus,amores,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+bonus,adj,good; excellent; worthy,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,bonus,bona,bonum,bonum,bono,boni,bonorum,bonis,bonos,bonis,bona,bonae,bonae,bonam,bona,bonae,bonarum,bonis,bonas,bonis,bonum,boni,bono,bonum,bono,bona,bonorum,bonis,bona,bonis,,,,,,,,,,,,,,,,,,,,,,,,
+amo,verb,to love; to be fond of,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,amo,amare,amavi,amatum,amo,amas,amat,amamus,amatis,amant,amabam,amabas,amabat,amabamus,amabatis,amabant,amabo,amabis,amabit,amabimus,amabitis,amabunt,amavi,amavisti,amavit,amavimus,amavistis,amaverunt
+`;
+
+/* ─────────────────────────────────────────────
+   PARSE CSV
+   ───────────────────────────────────────────── */
+function parseCSV(text) {
+  const lines = text.trim().split('\n');
+  const headers = lines[0].split(',').map(h => h.trim());
+  return lines.slice(1).map(line => {
+    const vals = splitCSVLine(line);
+    const obj = {};
+    headers.forEach((h, i) => { obj[h] = (vals[i] || '').trim(); });
+    return obj;
+  });
+}
+
+function splitCSVLine(line) {
+  const result = [];
+  let cur = '', inQ = false;
+  for (let i = 0; i < line.length; i++) {
+    const c = line[i];
+    if (c === '"') { inQ = !inQ; }
+    else if (c === ',' && !inQ) { result.push(cur); cur = ''; }
+    else { cur += c; }
+  }
+  result.push(cur);
+  return result;
+}
+
+/* ─────────────────────────────────────────────
+   SEARCH INDEX
+   Build a map: every form → lemma row
+   ───────────────────────────────────────────── */
+let dictionary = []; // array of row objects
+let formIndex = {}; // form (lowercase) → row
+
+function buildIndex(rows) {
+  formIndex = {};
+  rows.forEach(row => {
+    // Index the lemma itself
+    const key = row.lemma.toLowerCase();
+    if (key) formIndex[key] = row;
+    // Index every non-empty form value
+    Object.values(row).forEach(v => {
+      const vk = v.toLowerCase().trim();
+      if (vk && vk !== key && !['noun','adj','verb'].includes(vk)) {
+        if (!formIndex[vk]) formIndex[vk] = row; // first match wins
+      }
+    });
+  });
+}
+
+/* ─────────────────────────────────────────────
+   RENDER ENTRY
+   ───────────────────────────────────────────── */
+const CASES = ['Nominative','Genitive','Dative','Accusative','Ablative','Vocative'];
+const CASE_KEYS_SG = ['nom_sg','gen_sg','dat_sg','acc_sg','abl_sg','voc_sg'];
+const CASE_KEYS_PL = ['nom_pl','gen_pl','dat_pl','acc_pl','abl_pl','voc_pl'];
+
+const ADJ_GENDERS = [
+  { label: 'Masculine', prefix: 'm_' },
+  { label: 'Feminine',  prefix: 'f_' },
+  { label: 'Neuter',    prefix: 'n_' },
+];
+const ADJ_CASE_KEYS_SG = ['nom_sg','gen_sg','dat_sg','acc_sg','abl_sg'];
+const ADJ_CASE_KEYS_PL = ['nom_pl','gen_pl','dat_pl','acc_pl','abl_pl'];
+const ADJ_CASES = ['Nominative','Genitive','Dative','Accusative','Ablative'];
+
+const VERB_TENSES = [
+  { label: 'Present',    prefix: 'pres_' },
+  { label: 'Imperfect',  prefix: 'imperf_' },
+  { label: 'Future',     prefix: 'fut_' },
+  { label: 'Perfect',    prefix: 'perf_' },
+];
+const VERB_PERSONS = [
+  { label: '1st sg', key: '1sg' },
+  { label: '2nd sg', key: '2sg' },
+  { label: '3rd sg', key: '3sg' },
+  { label: '1st pl', key: '1pl' },
+  { label: '2nd pl', key: '2pl' },
+  { label: '3rd pl', key: '3pl' },
+];
+
+function renderNounTable(row) {
+  const hasForms = CASE_KEYS_SG.some(k => row[k]);
+  if (!hasForms) return '<p style="color:var(--text-secondary);font-size:.875rem;">No inflection data available.</p>';
+  let html = '<div class="forms-table-wrap"><table><thead><tr>';
+  html += '<th>Case</th><th>Singular</th><th>Plural</th></tr></thead><tbody>';
+  CASES.forEach((cas, i) => {
+    const sg = row[CASE_KEYS_SG[i]] || '—';
+    const pl = row[CASE_KEYS_PL[i]] || '—';
+    html += `<tr><td>${cas}</td><td>${sg}</td><td>${pl}</td></tr>`;
+  });
+  html += '</tbody></table></div>';
+  return html;
+}
+
+function renderAdjTable(row, genderIdx) {
+  const g = ADJ_GENDERS[genderIdx];
+  const hasForms = ADJ_CASE_KEYS_SG.some(k => row[g.prefix + k]);
+  if (!hasForms) return '<p style="color:var(--text-secondary);font-size:.875rem;">No inflection data available for this gender.</p>';
+  let html = '<div class="forms-table-wrap"><table><thead><tr>';
+  html += '<th>Case</th><th>Singular</th><th>Plural</th></tr></thead><tbody>';
+  ADJ_CASES.forEach((cas, i) => {
+    const sg = row[g.prefix + ADJ_CASE_KEYS_SG[i]] || '—';
+    const pl = row[g.prefix + ADJ_CASE_KEYS_PL[i]] || '—';
+    html += `<tr><td>${cas}</td><td>${sg}</td><td>${pl}</td></tr>`;
+  });
+  html += '</tbody></table></div>';
+  return html;
+}
+
+function renderVerbTable(row) {
+  const pp = [row.pp1, row.pp2, row.pp3, row.pp4].filter(Boolean);
+  let html = '';
+  if (pp.length) {
+    html += `<div class="principal-parts"><span class="pp-label">Principal parts</span>${pp.join(' · ')}</div>`;
+  }
+  const hasForms = VERB_TENSES.some(t => VERB_PERSONS.some(p => row[t.prefix + p.key]));
+  if (!hasForms) return html + '<p style="color:var(--text-secondary);font-size:.875rem;">No conjugation data available.</p>';
+
+  html += '<div class="forms-table-wrap"><table><thead><tr><th>Person</th>';
+  VERB_TENSES.forEach(t => { html += `<th>${t.label}</th>`; });
+  html += '</tr></thead><tbody>';
+  VERB_PERSONS.forEach(p => {
+    html += `<tr><td>${p.label}</td>`;
+    VERB_TENSES.forEach(t => {
+      html += `<td>${row[t.prefix + p.key] || '—'}</td>`;
+    });
+    html += '</tr>';
+  });
+  html += '</tbody></table></div>';
+  return html;
+}
+
+function posLabel(pos) {
+  const map = { noun: 'Noun', adj: 'Adjective', verb: 'Verb' };
+  return map[pos.toLowerCase()] || pos;
+}
+
+function renderEntry(row) {
+  const entryEl = document.getElementById('entry');
+  const pos = (row.pos || '').toLowerCase();
+
+  let formsHTML = '';
+  if (pos === 'noun') {
+    formsHTML = renderNounTable(row);
+  } else if (pos === 'adj') {
+    // Gender tabs with inline switching
+    formsHTML = `<div class="gender-tabs" id="genderTabs">
+      ${ADJ_GENDERS.map((g, i) => `<button class="gender-tab${i===0?' active':''}" data-g="${i}">${g.label}</button>`).join('')}
+    </div>
+    <div id="adjTableSlot">${renderAdjTable(row, 0)}</div>`;
+  } else if (pos === 'verb') {
+    formsHTML = renderVerbTable(row);
+  }
+
+  entryEl.innerHTML = `
+    <div class="entry-head">
+      <span class="entry-lemma">${row.lemma}</span>
+      <span class="entry-pos">${posLabel(row.pos)}</span>
+    </div>
+    <div class="entry-def">${row.definition || 'No definition available.'}</div>
+    <div class="forms-title">Inflected Forms</div>
+    ${formsHTML}
+  `;
+  entryEl.style.display = 'block';
+
+  // Wire up adj gender tabs
+  if (pos === 'adj') {
+    document.getElementById('genderTabs').addEventListener('click', e => {
+      const btn = e.target.closest('.gender-tab');
+      if (!btn) return;
+      document.querySelectorAll('.gender-tab').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('adjTableSlot').innerHTML = renderAdjTable(row, +btn.dataset.g);
+    });
+  }
+}
+
+/* ─────────────────────────────────────────────
+   SEARCH LOGIC
+   ───────────────────────────────────────────── */
+function doSearch(query) {
+  const q = query.trim().toLowerCase();
+  const statusEl = document.getElementById('status');
+  const entryEl = document.getElementById('entry');
+
+  if (!q) {
+    statusEl.textContent = `${dictionary.length} entries loaded.`;
+    entryEl.style.display = 'none';
+    return;
+  }
+
+  const row = formIndex[q];
+  if (row) {
+    statusEl.textContent = `Showing entry for "${row.lemma}"`;
+    renderEntry(row);
+  } else {
+    statusEl.textContent = `No entry found for "${query}".`;
+    entryEl.style.display = 'none';
+  }
+}
+
+/* ─────────────────────────────────────────────
+   LOAD DATA
+   ───────────────────────────────────────────── */
+async function loadDictionary() {
+  const loaderEl = document.getElementById('loader');
+  const statusEl = document.getElementById('status');
+  const srcEl    = document.getElementById('dataSource');
+
+  let csvText = null;
+
+  try {
+    const resp = await fetch(CSV_URL);
+    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+    csvText = await resp.text();
+    srcEl.textContent = CSV_URL;
+  } catch (e) {
+    console.warn('Could not fetch CSV, using sample data.', e);
+    csvText = SAMPLE_CSV;
+    srcEl.textContent = 'built-in sample data';
+    statusEl.textContent = 'Using sample data — place dictionary.csv next to index.html to load your own.';
+  }
+
+  loaderEl.style.display = 'none';
+  dictionary = parseCSV(csvText);
+  buildIndex(dictionary);
+
+  if (!statusEl.textContent.includes('sample')) {
+    statusEl.textContent = `${dictionary.length} entries loaded.`;
+  }
+
+  // Re-run search if something is already typed
+  const q = document.getElementById('search').value;
+  if (q.trim()) doSearch(q);
+}
+
+/* ─────────────────────────────────────────────
+   EVENT WIRING
+   ───────────────────────────────────────────── */
+const searchEl = document.getElementById('search');
+const clearBtn = document.getElementById('clearBtn');
+
+let debounceTimer;
+searchEl.addEventListener('input', () => {
+  clearBtn.style.display = searchEl.value ? 'block' : 'none';
+  clearTimeout(debounceTimer);
+  debounceTimer = setTimeout(() => doSearch(searchEl.value), 180);
+});
+
+clearBtn.addEventListener('click', () => {
+  searchEl.value = '';
+  clearBtn.style.display = 'none';
+  searchEl.focus();
+  doSearch('');
+});
+
+loadDictionary();
+</script>
+</body>
+</html>
+`;
