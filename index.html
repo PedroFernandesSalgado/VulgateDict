@@ -378,19 +378,6 @@ function renderVerb(tagMap) {
     });
   });
 
-  // non-finite: infinitives, participles, gerund, supine — generic tag list
-  const finitePattern = /^\d(sg|pl)_/;
-  const remaining = Object.keys(tagMap).filter(k => !finitePattern.test(k));
-  if (remaining.length) {
-    html += `<div class="tbl-title">Non-finite Forms</div>`;
-    html += '<div class="tbl-wrap"><table>';
-    remaining.forEach(tag => {
-      const forms = (tagMap[tag] || []).join(', ') || '—';
-      html += `<tr><td class="row-label" style="text-align:left">${tag.replace(/_/g,' ')}</td><td style="text-align:left">${forms}</td></tr>`;
-    });
-    html += '</table></div>';
-  }
-
   return html || '<p style="color:var(--muted);font-size:.85rem">No conjugation data.</p>';
 }
 
@@ -401,7 +388,7 @@ function basePos(type) {
   if (t.startsWith('noun')) return 'noun';
   if (t.startsWith('adj'))  return 'adj';
   if (t.startsWith('verb') || t === 'verb') return 'verb';
-  if (t.startsWith('part')) return 'verb';
+  if (t.startsWith('part')) return 'adj'; // participles use the adjective table
   return 'other';
 }
 
@@ -420,9 +407,10 @@ function renderForms(entry) {
   Object.entries(byType).forEach(([type, tagMap]) => {
     const pos = basePos(type);
     const typeLabel = posLabel(type);
-    // show a sub-heading per type group only if there are multiple types
+    // always label participle groups; label others only when multiple types present
+    const isParticiple = type.toLowerCase().startsWith('part');
     const multiType = Object.keys(byType).length > 1;
-    if (multiType) html += `<div class="tbl-title" style="margin-top:16px">${typeLabel}</div>`;
+    if (multiType || isParticiple) html += `<div class="tbl-title" style="margin-top:16px">${typeLabel}</div>`;
 
     if (pos === 'noun') html += renderNoun(tagMap);
     else if (pos === 'adj') html += renderAdj(tagMap);
