@@ -8,176 +8,122 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --bg: #ffffff;
-      --surface: #f8f8f8;
-      --border: #e5e5e5;
+      --bg: #fff;
+      --surface: #f6f6f6;
+      --border: #e0e0e0;
       --text: #1a1a1a;
-      --text-secondary: #6b6b6b;
+      --muted: #666;
       --accent: #2563eb;
-      --accent-light: #eff6ff;
-      --radius: 8px;
+      --accent-bg: #eff6ff;
+      --radius: 7px;
       --font: 'Inter', system-ui, sans-serif;
+      --tbl-head-bg: #e8f0fe;
+      --tbl-head-color: #1a3a6b;
     }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); min-height: 100vh; padding: 0 16px 80px; }
 
-    body {
-      font-family: var(--font);
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-      padding: 0 16px 80px;
-    }
+    header { max-width: 700px; margin: 0 auto; padding: 44px 0 32px; }
+    header h1 { font-size: 1.1rem; font-weight: 600; letter-spacing: -.01em; }
+    header p  { margin-top: 3px; font-size: .8rem; color: var(--muted); }
 
-    header {
-      max-width: 680px;
-      margin: 0 auto;
-      padding: 52px 0 40px;
+    /* Search */
+    .search-area { max-width: 700px; margin: 0 auto 10px; position: relative; }
+    .search-area input {
+      width: 100%; padding: 11px 38px 11px 14px;
+      font-family: var(--font); font-size: .9375rem;
+      border: 1.5px solid var(--border); border-radius: var(--radius);
+      background: var(--bg); color: var(--text); outline: none;
+      transition: border-color .15s;
     }
-    header h1 { font-size: 1.125rem; font-weight: 600; letter-spacing: -0.01em; }
-    header p  { margin-top: 4px; font-size: 0.8125rem; color: var(--text-secondary); }
+    .search-area input:focus { border-color: var(--accent); }
+    .search-area input::placeholder { color: #bbb; }
+    .clear-btn {
+      position: absolute; right: 11px; top: 50%; transform: translateY(-50%);
+      background: none; border: none; cursor: pointer; color: #bbb; font-size: .85rem; display: none; padding: 3px;
+    }
+    .clear-btn:hover { color: var(--text); }
 
-    .search-wrap {
-      max-width: 680px;
-      margin: 0 auto 16px;
-      position: relative;
+    /* Autocomplete */
+    .autocomplete-box {
+      position: absolute; top: calc(100% + 2px); left: 0; right: 0;
+      background: var(--bg); border: 1.5px solid var(--border);
+      border-radius: var(--radius); box-shadow: 0 4px 16px rgba(0,0,0,.08);
+      z-index: 100; display: none; max-height: 220px; overflow-y: auto;
     }
-    .search-wrap input {
-      width: 100%;
-      padding: 13px 44px 13px 16px;
-      font-family: var(--font);
-      font-size: 1rem;
-      border: 1.5px solid var(--border);
-      border-radius: var(--radius);
-      background: var(--bg);
-      color: var(--text);
-      outline: none;
-      transition: border-color 0.15s;
+    .ac-item {
+      padding: 8px 14px; cursor: pointer; font-size: .875rem;
+      display: flex; gap: 10px; align-items: baseline;
     }
-    .search-wrap input::placeholder { color: #b8b8b8; }
-    .search-wrap input:focus { border-color: var(--accent); }
-    .search-wrap .clear-btn {
-      position: absolute; right: 13px; top: 50%; transform: translateY(-50%);
-      background: none; border: none; cursor: pointer;
-      color: #b8b8b8; font-size: 0.9rem; display: none; padding: 4px;
-    }
-    .search-wrap .clear-btn:hover { color: var(--text); }
+    .ac-item:hover, .ac-item.active { background: var(--accent-bg); }
+    .ac-item .ac-form { color: var(--text); }
+    .ac-item .ac-head { color: var(--muted); font-size: .75rem; }
 
-    .status {
-      max-width: 680px; margin: 0 auto 28px;
-      font-size: 0.8125rem; color: var(--text-secondary); min-height: 20px;
-    }
+    .status { max-width: 700px; margin: 0 auto 20px; font-size: .8rem; color: var(--muted); min-height: 18px; }
 
-    /* Entry */
-    #entry {
-      max-width: 680px; margin: 0 auto;
-      display: none;
-      animation: slideUp 0.18s ease both;
-    }
-    @keyframes slideUp {
-      from { opacity: 0; transform: translateY(6px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    @media (prefers-reduced-motion: reduce) { #entry { animation: none; } }
+    /* Results list */
+    #results { max-width: 700px; margin: 0 auto; display: flex; flex-direction: column; gap: 32px; }
 
-    .entry-head {
-      display: flex; align-items: baseline; gap: 10px;
-      flex-wrap: wrap; margin-bottom: 8px;
-    }
-    .entry-lemma { font-size: 1.5rem; font-weight: 600; letter-spacing: -0.02em; }
+    .entry { animation: slideUp .17s ease both; }
+    @keyframes slideUp { from { opacity:0; transform:translateY(5px); } to { opacity:1; transform:translateY(0); } }
+    @media (prefers-reduced-motion:reduce) { .entry { animation:none; } }
+
+    .entry-head { display: flex; align-items: baseline; gap: 9px; flex-wrap: wrap; margin-bottom: 6px; }
+    .entry-lemma { font-size: 1.4rem; font-weight: 600; letter-spacing: -.02em; }
     .entry-pos {
-      font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.05em;
-      text-transform: uppercase; color: var(--accent);
-      background: var(--accent-light); padding: 3px 7px; border-radius: 4px;
+      font-size: .65rem; font-weight: 600; letter-spacing: .05em; text-transform: uppercase;
+      color: var(--accent); background: var(--accent-bg); padding: 2px 7px; border-radius: 4px;
     }
-    .entry-def {
-      font-size: 0.9375rem; line-height: 1.6; color: var(--text);
-      margin-bottom: 28px; padding-bottom: 24px; border-bottom: 1px solid var(--border);
-    }
+    .entry-def { font-size: .9rem; line-height: 1.6; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
 
-    /* Forms table */
-    .forms-label {
-      font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.08em;
-      text-transform: uppercase; color: var(--text-secondary); margin-bottom: 12px;
-    }
+    .forms-label { font-size: .625rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
 
-    /* Noun / Adj table */
-    .forms-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-    table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
-    th {
-      text-align: left; padding: 8px 14px;
-      font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.05em;
-      text-transform: uppercase; color: var(--text-secondary);
-      background: var(--surface); border-bottom: 1px solid var(--border);
-      white-space: nowrap;
-    }
-    td {
-      padding: 9px 14px; border-bottom: 1px solid var(--border);
-      vertical-align: top; color: var(--text);
-    }
-    td.row-label {
-      color: var(--text-secondary); font-weight: 500;
-      white-space: nowrap; width: 1%;
-    }
+    /* Tables — compact Wiktionary style */
+    .tbl-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 14px; }
+    .tbl-title { font-size: .7rem; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); margin-bottom: 5px; margin-top: 14px; }
+    table { border-collapse: collapse; font-size: .8rem; }
+    th, td { border: 1px solid var(--border); padding: 4px 9px; text-align: center; white-space: nowrap; }
+    th { background: var(--tbl-head-bg); color: var(--tbl-head-color); font-weight: 600; font-size: .72rem; }
+    td.row-label { background: var(--tbl-head-bg); color: var(--tbl-head-color); font-weight: 600; text-align: left; font-size: .72rem; }
     td.empty { color: #ccc; }
-    tr:last-child td { border-bottom: none; }
-    tr:hover td { background: var(--surface); }
+    td.span-label { background: var(--surface); color: var(--muted); font-style: italic; font-size: .75rem; }
 
-    /* multiple forms in one cell */
-    .form-list { display: flex; flex-direction: column; gap: 1px; }
+    /* multi-form cell */
+    .mf { display: flex; flex-direction: column; gap: 0; }
+    .mf span + span::before { content: ''; display: block; height: 1px; background: var(--border); margin: 2px 0; }
 
-    /* Verb: tense sections */
-    .verb-section { margin-bottom: 24px; }
-    .verb-section-title {
-      font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.06em;
-      text-transform: uppercase; color: var(--text-secondary);
-      margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px solid var(--border);
-    }
+    /* entry divider */
+    .entry + .entry { padding-top: 8px; border-top: 2px solid var(--border); }
 
-    /* Generic tag list fallback */
-    .tag-list { display: flex; flex-direction: column; gap: 0; }
-    .tag-row {
-      display: flex; gap: 16px; padding: 8px 0;
-      border-bottom: 1px solid var(--border); font-size: 0.875rem;
-    }
-    .tag-row:last-child { border-bottom: none; }
-    .tag-row .tag { color: var(--text-secondary); font-weight: 500; min-width: 160px; }
-    .tag-row .forms-cell { color: var(--text); }
-
-    footer {
-      max-width: 680px; margin: 60px auto 0;
-      font-size: 0.75rem; color: #c0c0c0;
-      border-top: 1px solid var(--border); padding-top: 14px;
-    }
+    footer { max-width: 700px; margin: 48px auto 0; font-size: .72rem; color: #ccc; border-top: 1px solid var(--border); padding-top: 12px; }
   </style>
 </head>
 <body>
 
 <header>
   <h1>Latin Dictionary</h1>
-  <p>Search by any form or lemma.</p>
+  <p>Search by any form or lemma — all matching entries are shown.</p>
 </header>
 
-<div class="search-wrap">
-  <input type="text" id="search" placeholder="e.g. amor, amorem, puella…"
-         autocomplete="off" spellcheck="false" />
+<div class="search-area">
+  <input type="text" id="search" placeholder="e.g. amor, amorem, puella…" autocomplete="off" spellcheck="false" />
   <button class="clear-btn" id="clearBtn" aria-label="Clear">✕</button>
+  <div class="autocomplete-box" id="acBox"></div>
 </div>
 <div class="status" id="status">Loading…</div>
-
-<div id="entry" role="region" aria-live="polite"></div>
+<div id="results"></div>
 
 <footer>Data: <code>dict.csv</code></footer>
 
 <script>
-/* ═══════════════════════════════════════════
+/* ═══════════════════════════════════════════════════════
    CONFIG
-═══════════════════════════════════════════ */
+═══════════════════════════════════════════════════════ */
 const CSV_URL = 'dict.csv';
 
-/* ═══════════════════════════════════════════
-   SAMPLE DATA  (fallback when CSV not found)
-═══════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════════
+   SAMPLE DATA
+═══════════════════════════════════════════════════════ */
 const SAMPLE = `amor,noun_masc,"love; desire; passion"
  amorem,,acc_sg
  amoris,,gen_sg
@@ -199,54 +145,67 @@ bonus,adj_pos,"good; excellent; worthy"
  bono,,dat_sg_masc,abl_sg_masc,dat_sg_neut,abl_sg_neut
  bonos,,acc_pl_masc
  bonorum,,gen_pl_masc
- bonis,,dat_pl_masc,abl_pl_masc
+ bonis,,dat_pl_masc,abl_pl_masc,dat_pl_fem,abl_pl_fem,dat_pl_neut,abl_pl_neut
  bona,,nom_sg_fem,abl_sg_fem,nom_pl_neut,acc_pl_neut
  bonae,,gen_sg_fem,dat_sg_fem,nom_pl_fem,voc_pl_fem
  bonam,,acc_sg_fem
  bonas,,acc_pl_fem
- bonarum,,gen_pl_fem
+ bonarum,,gen_pl_fem,gen_pl_neut
+ melior,adj_comp,nom_sg_masc,nom_sg_fem
+ melius,adj_comp,nom_sg_neut,acc_sg_neut
+ optimus,adj_sup,nom_sg_masc
 amo,verb,"to love; to be fond of"
- amas,,2sg_pres_act
- amat,,3sg_pres_act
- amamus,,1pl_pres_act
- amatis,,2pl_pres_act
- amant,,3pl_pres_act
- amabam,,1sg_imperf_act
- amabas,,2sg_imperf_act
- amabat,,3sg_imperf_act
- amavi,,1sg_perf_act
- amavisti,,2sg_perf_act
- amavit,,3sg_perf_act
- amavimus,,1pl_perf_act
- amavistis,,2pl_perf_act
- amaverunt,,3pl_perf_act
+ amas,,2sg_pres_ind_act
+ amat,,3sg_pres_ind_act
+ amamus,,1pl_pres_ind_act
+ amatis,,2pl_pres_ind_act
+ amant,,3pl_pres_ind_act
+ amabam,,1sg_imperf_ind_act
+ amabas,,2sg_imperf_ind_act
+ amabat,,3sg_imperf_ind_act
+ amabamus,,1pl_imperf_ind_act
+ amabatis,,2pl_imperf_ind_act
+ amabant,,3pl_imperf_ind_act
+ amabo,,1sg_fut_ind_act
+ amabis,,2sg_fut_ind_act
+ amabit,,3sg_fut_ind_act
+ amabimus,,1pl_fut_ind_act
+ amabitis,,2pl_fut_ind_act
+ amabunt,,3pl_fut_ind_act
+ amavi,,1sg_perf_ind_act
+ amavisti,,2sg_perf_ind_act
+ amavit,,3sg_perf_ind_act
+ amavimus,,1pl_perf_ind_act
+ amavistis,,2pl_perf_ind_act
+ amaverunt,,3pl_perf_ind_act
+ amem,,1sg_pres_subj_act
+ ames,,2sg_pres_subj_act
+ amet,,3sg_pres_subj_act
+ amemus,,1pl_pres_subj_act
+ ametis,,2pl_pres_subj_act
+ ament,,3pl_pres_subj_act
+ amatur,,3sg_pres_ind_pass
+ amantur,,3pl_pres_ind_pass
+ amatus,part_pass_perf,nom_sg_masc
 `;
 
-/* ═══════════════════════════════════════════
+/* ═══════════════════════════════════════════════════════
    PARSER
-   Lines NOT starting with space → head entry:  lemma, type, "definition"
-   Lines starting with space    → form row:      _(space)_ form, type_override, tag, tag, …
-   type_override is empty string when same as head type
-═══════════════════════════════════════════ */
+═══════════════════════════════════════════════════════ */
 function parseDict(text) {
-  // entries: array of { lemma, type, definition, forms: [{form, type, tags:[]}] }
   const entries = [];
   let current = null;
-
-  for (const rawLine of text.split('\n')) {
-    if (!rawLine.trim()) continue;
-
-    if (rawLine[0] === ' ' || rawLine[0] === '\t') {
-      // form row
+  for (const raw of text.split('\n')) {
+    if (!raw.trim()) continue;
+    if (raw[0] === ' ' || raw[0] === '\t') {
       if (!current) continue;
-      const parts = splitCSV(rawLine.trim());
+      const parts = splitCSV(raw.trim());
       const form = (parts[0] || '').trim();
-      const typeOverride = (parts[1] || '').trim() || current.type;
+      const typeOverride = (parts[1] || '').trim() || null;
       const tags = parts.slice(2).map(t => t.trim()).filter(Boolean);
       if (form) current.forms.push({ form, type: typeOverride, tags });
     } else {
-      // head entry
-      const parts = splitCSV(rawLine.trim());
+      const parts = splitCSV(raw.trim());
       const lemma = (parts[0] || '').trim();
       const type  = (parts[1] || '').trim();
       const def   = (parts[2] || '').trim();
@@ -259,254 +218,232 @@ function parseDict(text) {
 }
 
 function splitCSV(line) {
-  const result = [];
-  let cur = '', inQ = false;
+  const result = []; let cur = '', inQ = false;
   for (let i = 0; i < line.length; i++) {
     const c = line[i];
-    if (c === '"' && !inQ) { inQ = true; }
-    else if (c === '"' && inQ) { inQ = false; }
+    if (c === '"' && !inQ) inQ = true;
+    else if (c === '"' && inQ) inQ = false;
     else if (c === ',' && !inQ) { result.push(cur); cur = ''; }
-    else { cur += c; }
+    else cur += c;
   }
   result.push(cur);
   return result;
 }
 
-/* ═══════════════════════════════════════════
-   INDEX
-   Maps every form (lowercase) → entry
-   Also maps lemma → entry
-═══════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════════
+   INDEX  — form → [entry, …]  (multiple entries per form)
+═══════════════════════════════════════════════════════ */
 let entries = [];
-let formIndex = {}; // form string → entry
+let formIndex = {}; // form (lc) → Set of entry objects
+
+function addToIndex(key, entry) {
+  const k = key.toLowerCase();
+  if (!formIndex[k]) formIndex[k] = new Set();
+  formIndex[k].add(entry);
+}
 
 function buildIndex(parsed) {
   formIndex = {};
   parsed.forEach(entry => {
-    const lk = entry.lemma.toLowerCase();
-    if (!formIndex[lk]) formIndex[lk] = entry;
-    entry.forms.forEach(f => {
-      const fk = f.form.toLowerCase();
-      if (!formIndex[fk]) formIndex[fk] = entry;
-    });
+    addToIndex(entry.lemma, entry);
+    entry.forms.forEach(f => addToIndex(f.form, entry));
   });
 }
 
-/* ═══════════════════════════════════════════
-   TAG ANALYSIS
-   Build: tagMap = { tag: [form, …], … }  from entry.forms
-   Then dispatch to the right table renderer.
-═══════════════════════════════════════════ */
-function buildTagMap(entry) {
-  // tag → Set of forms
-  const map = {};
+/* ═══════════════════════════════════════════════════════
+   TAG MAP  — base_type:tag → [form, …]
+   Groups form rows by their effective type, then by tag.
+   Returns: { type_string: { tag: [forms] } }
+═══════════════════════════════════════════════════════ */
+function buildTagMaps(entry) {
+  // group forms by their type (use entry.type if form.type is null)
+  const byType = {}; // type → { tag → [form] }
   entry.forms.forEach(f => {
+    const t = f.type || entry.type;
+    if (!byType[t]) byType[t] = {};
     f.tags.forEach(tag => {
-      if (!map[tag]) map[tag] = [];
-      map[tag].push(f.form);
+      if (!byType[t][tag]) byType[t][tag] = [];
+      byType[t][tag].push(f.form);
     });
   });
-  return map;
+  return byType;
 }
 
-/* ═══════════════════════════════════════════
-   TABLE RENDERERS
-═══════════════════════════════════════════ */
-
-// ── Helpers ──────────────────────────────
-const CASES    = ['nom','gen','dat','acc','abl','voc'];
-const CASE_LABEL = { nom:'Nom.', gen:'Gen.', dat:'Dat.', acc:'Acc.', abl:'Abl.', voc:'Voc.' };
-const NUMBERS  = ['sg','pl'];
+/* ═══════════════════════════════════════════════════════
+   RENDER HELPERS
+═══════════════════════════════════════════════════════ */
+const CASES   = ['nom','gen','dat','acc','abl','voc','loc'];
+const CASE_LBL = { nom:'Nominative', gen:'Genitive', dat:'Dative', acc:'Accusative', abl:'Ablative', voc:'Vocative', loc:'Locative' };
+const GENDERS = ['masc','fem','neut'];
+const GENDER_LBL = { masc:'Masculine', fem:'Feminine', neut:'Neuter' };
+const NUMBERS = ['sg','pl'];
+const NUMBER_LBL = { sg:'Singular', pl:'Plural' };
+const PERSONS = ['1','2','3'];
+const PERSON_LBL = { '1':'1st', '2':'2nd', '3':'3rd' };
+const TENSES  = ['pres','imperf','fut','perf','pluperf','futperf'];
+const TENSE_LBL = { pres:'Present', imperf:'Imperfect', fut:'Future', perf:'Perfect', pluperf:'Pluperfect', futperf:'Fut. Perfect' };
+const MOODS   = ['ind','subj','imp'];
+const MOOD_LBL = { ind:'Indicative', subj:'Subjunctive', imp:'Imperative' };
+const VOICES  = ['act','pass'];
+const VOICE_LBL = { act:'Active', pass:'Passive' };
 
 function cell(tagMap, ...keys) {
-  // keys: try each in order, collect all forms for any that match
-  const forms = new Set();
-  keys.forEach(k => (tagMap[k] || []).forEach(f => forms.add(f)));
-  if (forms.size === 0) return '<td class="empty">—</td>';
-  const items = [...forms];
-  if (items.length === 1) return `<td>${items[0]}</td>`;
-  return `<td><div class="form-list">${items.map(f => `<span>${f}</span>`).join('')}</div></td>`;
+  const forms = [];
+  keys.filter(Boolean).forEach(k => (tagMap[k] || []).forEach(f => { if (!forms.includes(f)) forms.push(f); }));
+  if (!forms.length) return '<td class="empty">—</td>';
+  if (forms.length === 1) return `<td>${forms[0]}</td>`;
+  return `<td><div class="mf">${forms.map(f => `<span>${f}</span>`).join('')}</div></td>`;
 }
 
-// ── Noun table (case × number) ────────────
-function renderNounTable(tagMap) {
-  let html = '<div class="forms-table-wrap"><table>';
-  html += '<thead><tr><th></th><th>Singular</th><th>Plural</th></tr></thead><tbody>';
+function hasAny(tagMap, ...keys) {
+  return keys.some(k => k && (tagMap[k] || []).length > 0);
+}
+
+/* ── Noun table ────────────────────────────────────── */
+function renderNoun(tagMap) {
+  // detect if gender-tagged (for heteroclite nouns) or plain
+  const hasGender = CASES.some(c => GENDERS.some(g => hasAny(tagMap, `${c}_sg_${g}`, `${c}_pl_${g}`)));
+  if (hasGender) return renderAdj(tagMap); // reuse adj renderer
+
+  let h = '<table><thead><tr><th></th><th>Singular</th><th>Plural</th></tr></thead><tbody>';
   CASES.forEach(c => {
-    html += `<tr><td class="row-label">${CASE_LABEL[c]}</td>`;
-    html += cell(tagMap, `${c}_sg`);
-    html += cell(tagMap, `${c}_pl`);
-    html += '</tr>';
+    if (!hasAny(tagMap, `${c}_sg`, `${c}_pl`)) return;
+    h += `<tr><td class="row-label">${CASE_LBL[c]}</td>${cell(tagMap,`${c}_sg`)}${cell(tagMap,`${c}_pl`)}</tr>`;
   });
-  html += '</tbody></table></div>';
-  return html;
+  h += '</tbody></table>';
+  return `<div class="tbl-wrap">${h}</div>`;
 }
 
-// ── Adj table (case × number, three genders) ─
-const GENDERS = [
-  { key: 'masc', label: 'Masculine' },
-  { key: 'fem',  label: 'Feminine'  },
-  { key: 'neut', label: 'Neuter'    },
-];
+/* ── Adjective table (genders side by side) ─────── */
+function renderAdj(tagMap) {
+  // columns: sg_masc, sg_fem, sg_neut, pl_masc, pl_fem, pl_neut
+  const cols = [];
+  NUMBERS.forEach(n => GENDERS.forEach(g => {
+    if (CASES.some(c => hasAny(tagMap, `${c}_${n}_${g}`, `${c}_${n}`))) cols.push({n,g});
+  }));
+  if (!cols.length) return renderNoun(tagMap); // fallback plain noun
 
-function renderAdjTable(tagMap) {
-  // Detect which genders actually have data
-  const activeGenders = GENDERS.filter(g =>
-    CASES.some(c => NUMBERS.some(n => (tagMap[`${c}_${n}_${g.key}`] || []).length > 0))
-  );
-  // Fallback: if no gender-tagged forms, treat like noun
-  if (activeGenders.length === 0) return renderNounTable(tagMap);
+  let h = '<table><thead>';
+  // top header: Singular colspan / Plural colspan
+  const sgCols = cols.filter(c=>c.n==='sg').length;
+  const plCols = cols.filter(c=>c.n==='pl').length;
+  h += '<tr><th></th>';
+  if (sgCols) h += `<th colspan="${sgCols}">${NUMBER_LBL.sg}</th>`;
+  if (plCols) h += `<th colspan="${plCols}">${NUMBER_LBL.pl}</th>`;
+  h += '</tr><tr><th></th>';
+  cols.forEach(({g}) => h += `<th>${GENDER_LBL[g]}</th>`);
+  h += '</tr></thead><tbody>';
 
-  // One table per gender
-  let html = '';
-  activeGenders.forEach(g => {
-    html += `<div style="margin-bottom:24px">`;
-    html += `<div class="verb-section-title">${g.label}</div>`;
-    html += '<div class="forms-table-wrap"><table>';
-    html += '<thead><tr><th></th><th>Singular</th><th>Plural</th></tr></thead><tbody>';
-    CASES.forEach(c => {
-      html += `<tr><td class="row-label">${CASE_LABEL[c]}</td>`;
-      html += cell(tagMap, `${c}_sg_${g.key}`);
-      html += cell(tagMap, `${c}_pl_${g.key}`);
-      html += '</tr>';
-    });
-    html += '</tbody></table></div></div>';
+  CASES.forEach(c => {
+    const keys = cols.map(({n,g}) => `${c}_${n}_${g}`);
+    if (!keys.some(k => hasAny(tagMap, k))) return;
+    h += `<tr><td class="row-label">${CASE_LBL[c]}</td>`;
+    cols.forEach(({n,g}) => { h += cell(tagMap, `${c}_${n}_${g}`); });
+    h += '</tr>';
   });
-  return html;
+  h += '</tbody></table>';
+  return `<div class="tbl-wrap">${h}</div>`;
 }
 
-// ── Verb table ────────────────────────────
-// Group by tense, rows = person/number, cols = act/pass (if present)
-const TENSES = ['pres','imperf','fut','perf','pluperf','futperf'];
-const TENSE_LABEL = {
-  pres:'Present', imperf:'Imperfect', fut:'Future',
-  perf:'Perfect', pluperf:'Pluperfect', futperf:'Future Perfect'
-};
-const MOODS = ['ind','subj'];
-const MOOD_LABEL = { ind: 'Indicative', subj: 'Subjunctive' };
-const VOICES = ['act','pass'];
-const VOICE_LABEL = { act: 'Active', pass: 'Passive' };
-const PERSONS = ['1sg','2sg','3sg','1pl','2pl','3pl'];
-const PERSON_LABEL = { '1sg':'1st sg','2sg':'2nd sg','3sg':'3rd sg','1pl':'1st pl','2pl':'2nd pl','3pl':'3rd pl' };
-
-function renderVerbTable(tagMap) {
-  // Detect which tense/mood/voice combos have data
-  // Tag pattern: person_tense_mood_voice  e.g. 3sg_pres_act  or  2pl_imperf_subj_pass
-  // Mood may be omitted (defaults to ind)
-
-  // Collect all tags present
-  const allTags = Object.keys(tagMap);
-
-  // For each tense, find moods and voices that appear
+/* ── Verb conjugation table ──────────────────────── */
+function renderVerb(tagMap) {
   let html = '';
-  TENSES.forEach(tense => {
-    MOODS.forEach(mood => {
-      // Find voices for this tense+mood
-      const activeVoices = VOICES.filter(voice =>
-        PERSONS.some(p => {
-          // try with mood and without (ind is default)
-          return tagMap[`${p}_${tense}_${mood}_${voice}`]?.length
-              || (mood === 'ind' && tagMap[`${p}_${tense}_${voice}`]?.length);
-        })
+
+  // finite forms: group by mood, then voice, then tense
+  MOODS.forEach(mood => {
+    VOICES.forEach(voice => {
+      // find which tenses have data for this mood+voice
+      const activeTenses = TENSES.filter(t =>
+        PERSONS.some(p => NUMBERS.some(n => hasAny(tagMap, `${p}${n}_${t}_${mood}_${voice}`)))
       );
-      if (activeVoices.length === 0) return;
+      if (!activeTenses.length) return;
 
-      const moodLabel = `${TENSE_LABEL[tense] || tense} ${MOOD_LABEL[mood] || mood}`;
-      html += `<div class="verb-section">`;
-      html += `<div class="verb-section-title">${moodLabel}</div>`;
-      html += '<div class="forms-table-wrap"><table><thead><tr><th></th>';
-      activeVoices.forEach(v => { html += `<th>${VOICE_LABEL[v]}</th>`; });
+      html += `<div class="tbl-title">${MOOD_LBL[mood]} — ${VOICE_LBL[voice]}</div>`;
+      html += '<div class="tbl-wrap"><table><thead>';
+      // header row 1: empty | sg colspan3 | pl colspan3
+      html += `<tr><th></th><th colspan="3">${NUMBER_LBL.sg}</th><th colspan="3">${NUMBER_LBL.pl}</th></tr>`;
+      // header row 2: tense | 1 2 3 | 1 2 3
+      html += '<tr><th></th>';
+      [0,1].forEach(() => PERSONS.forEach(p => html += `<th>${PERSON_LBL[p]}</th>`));
       html += '</tr></thead><tbody>';
 
-      PERSONS.forEach(p => {
-        html += `<tr><td class="row-label">${PERSON_LABEL[p]}</td>`;
-        activeVoices.forEach(voice => {
-          // accept both tag styles: p_tense_mood_voice and p_tense_voice
-          html += cell(tagMap,
-            `${p}_${tense}_${mood}_${voice}`,
-            mood === 'ind' ? `${p}_${tense}_${voice}` : null
-          );
-        });
+      activeTenses.forEach(t => {
+        html += `<tr><td class="row-label">${TENSE_LBL[t]}</td>`;
+        NUMBERS.forEach(n => PERSONS.forEach(p => {
+          html += cell(tagMap, `${p}${n}_${t}_${mood}_${voice}`);
+        }));
         html += '</tr>';
       });
-
-      html += '</tbody></table></div></div>';
+      html += '</tbody></table></div>';
     });
   });
 
-  // Infinitives, imperatives, participles — catch remaining tags as generic list
-  const knownPattern = /^(1sg|2sg|3sg|1pl|2pl|3pl)_/;
-  const remaining = allTags.filter(t => !knownPattern.test(t));
+  // non-finite: infinitives, participles, gerund, supine — generic tag list
+  const finitePattern = /^\d(sg|pl)_/;
+  const remaining = Object.keys(tagMap).filter(k => !finitePattern.test(k));
   if (remaining.length) {
-    html += `<div class="verb-section">`;
-    html += `<div class="verb-section-title">Other Forms</div>`;
-    html += '<div class="tag-list">';
+    html += `<div class="tbl-title">Non-finite Forms</div>`;
+    html += '<div class="tbl-wrap"><table>';
     remaining.forEach(tag => {
-      const forms = tagMap[tag].join(', ');
-      html += `<div class="tag-row"><span class="tag">${formatTag(tag)}</span><span class="forms-cell">${forms}</span></div>`;
+      const forms = (tagMap[tag] || []).join(', ') || '—';
+      html += `<tr><td class="row-label" style="text-align:left">${tag.replace(/_/g,' ')}</td><td style="text-align:left">${forms}</td></tr>`;
     });
-    html += '</div></div>';
+    html += '</table></div>';
   }
 
-  if (!html) html = '<p style="color:var(--text-secondary);font-size:.875rem;">No conjugation data.</p>';
-  return html;
+  return html || '<p style="color:var(--muted);font-size:.85rem">No conjugation data.</p>';
 }
 
-// ── Generic fallback (tag → forms list) ──
-function renderGenericTable(tagMap) {
-  const tags = Object.keys(tagMap);
-  if (!tags.length) return '<p style="color:var(--text-secondary);font-size:.875rem;">No form data.</p>';
-  let html = '<div class="tag-list">';
-  tags.forEach(tag => {
-    const forms = tagMap[tag].join(', ');
-    html += `<div class="tag-row"><span class="tag">${formatTag(tag)}</span><span class="forms-cell">${forms}</span></div>`;
-  });
-  html += '</div>';
-  return html;
-}
-
-// Pretty-print a tag string
-function formatTag(tag) {
-  return tag.replace(/_/g, ' ');
-}
-
-/* ═══════════════════════════════════════════
-   POS DETECTION & DISPATCH
-═══════════════════════════════════════════ */
+/* ── Dispatch by type string ─────────────────────── */
 function basePos(type) {
-  if (!type) return 'unknown';
+  if (!type) return 'other';
   const t = type.toLowerCase();
   if (t.startsWith('noun')) return 'noun';
   if (t.startsWith('adj'))  return 'adj';
   if (t.startsWith('verb') || t === 'verb') return 'verb';
-  if (t.startsWith('part')) return 'verb'; // participles get verb-style
+  if (t.startsWith('part')) return 'verb';
   return 'other';
 }
 
 function posLabel(type) {
   const map = {
-    noun_masc: 'Noun (m)', noun_fem: 'Noun (f)', noun_neut: 'Noun (n)',
-    adj_pos: 'Adjective', adj_com: 'Comparative', adj_sup: 'Superlative',
-    verb: 'Verb', part_pass_perf: 'Part. (pass. perf.)',
+    noun_masc:'Noun (m.)', noun_fem:'Noun (f.)', noun_neut:'Noun (n.)',
+    adj_pos:'Adj. (positive)', adj_comp:'Adj. (comparative)', adj_sup:'Adj. (superlative)',
+    verb:'Verb', part_pass_perf:'Participle (pass. perf.)', part_pres_act:'Participle (pres. act.)',
   };
-  return map[type] || type.replace(/_/g, ' ');
+  return map[type] || type.replace(/_/g,' ');
 }
 
 function renderForms(entry) {
-  const tagMap = buildTagMap(entry);
-  const pos = basePos(entry.type);
-  if (pos === 'noun') return renderNounTable(tagMap);
-  if (pos === 'adj')  return renderAdjTable(tagMap);
-  if (pos === 'verb') return renderVerbTable(tagMap);
-  return renderGenericTable(tagMap);
+  const byType = buildTagMaps(entry);
+  let html = '';
+  Object.entries(byType).forEach(([type, tagMap]) => {
+    const pos = basePos(type);
+    const typeLabel = posLabel(type);
+    // show a sub-heading per type group only if there are multiple types
+    const multiType = Object.keys(byType).length > 1;
+    if (multiType) html += `<div class="tbl-title" style="margin-top:16px">${typeLabel}</div>`;
+
+    if (pos === 'noun') html += renderNoun(tagMap);
+    else if (pos === 'adj') html += renderAdj(tagMap);
+    else if (pos === 'verb') html += renderVerb(tagMap);
+    else {
+      // generic
+      html += '<div class="tbl-wrap"><table>';
+      Object.entries(tagMap).forEach(([tag, forms]) => {
+        html += `<tr><td class="row-label">${tag.replace(/_/g,' ')}</td><td>${forms.join(', ')}</td></tr>`;
+      });
+      html += '</table></div>';
+    }
+  });
+  return html;
 }
 
-/* ═══════════════════════════════════════════
-   RENDER ENTRY
-═══════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════════
+   RENDER ONE ENTRY CARD
+═══════════════════════════════════════════════════════ */
 function renderEntry(entry) {
-  const el = document.getElementById('entry');
-  el.innerHTML = `
+  return `<div class="entry">
     <div class="entry-head">
       <span class="entry-lemma">${entry.lemma}</span>
       <span class="entry-pos">${posLabel(entry.type)}</span>
@@ -514,37 +451,87 @@ function renderEntry(entry) {
     <div class="entry-def">${entry.definition || 'No definition available.'}</div>
     <div class="forms-label">Inflected Forms</div>
     ${renderForms(entry)}
-  `;
-  el.style.display = 'block';
+  </div>`;
 }
 
-/* ═══════════════════════════════════════════
-   SEARCH
-═══════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════════
+   SEARCH  — returns all matching entries
+═══════════════════════════════════════════════════════ */
 function doSearch(query) {
   const q = query.trim().toLowerCase();
-  const statusEl = document.getElementById('status');
-  const entryEl  = document.getElementById('entry');
+  const statusEl  = document.getElementById('status');
+  const resultsEl = document.getElementById('results');
 
   if (!q) {
     statusEl.textContent = `${entries.length} entries loaded.`;
-    entryEl.style.display = 'none';
+    resultsEl.innerHTML = '';
     return;
   }
 
-  const entry = formIndex[q];
-  if (entry) {
-    statusEl.textContent = `Showing entry for "${entry.lemma}"`;
-    renderEntry(entry);
+  const matched = formIndex[q] ? [...formIndex[q]] : [];
+  if (matched.length) {
+    statusEl.textContent = `${matched.length} result${matched.length>1?'s':''} for "${query}"`;
+    resultsEl.innerHTML = matched.map(renderEntry).join('');
   } else {
     statusEl.textContent = `No entry found for "${query}".`;
-    entryEl.style.display = 'none';
+    resultsEl.innerHTML = '';
   }
 }
 
-/* ═══════════════════════════════════════════
+/* ═══════════════════════════════════════════════════════
+   AUTOCOMPLETE
+═══════════════════════════════════════════════════════ */
+const MAX_AC = 8;
+let acIndex = -1;
+
+function getSuggestions(q) {
+  if (!q || q.length < 2) return [];
+  const lq = q.toLowerCase();
+  // collect matching form→entry pairs, deduplicated by (form, lemma)
+  const seen = new Set();
+  const results = [];
+  for (const [form, entrySet] of Object.entries(formIndex)) {
+    if (!form.startsWith(lq)) continue;
+    for (const entry of entrySet) {
+      const key = form + '|' + entry.lemma;
+      if (seen.has(key)) continue;
+      seen.add(key);
+      results.push({ form, entry });
+      if (results.length >= MAX_AC) return results;
+    }
+  }
+  return results;
+}
+
+function renderAC(suggestions, q) {
+  const box = document.getElementById('acBox');
+  if (!suggestions.length) { box.style.display = 'none'; return; }
+  box.innerHTML = suggestions.map((s, i) => {
+    const hl = s.form.slice(0, q.length) + `<b>${s.form.slice(q.length)}</b>`;
+    const head = s.form === s.entry.lemma ? '' : `<span class="ac-head">→ ${s.entry.lemma}</span>`;
+    return `<div class="ac-item" data-i="${i}" data-form="${s.form}">
+      <span class="ac-form">${hl}</span>${head}
+    </div>`;
+  }).join('');
+  box.style.display = 'block';
+  acIndex = -1;
+}
+
+function hideAC() { document.getElementById('acBox').style.display = 'none'; acIndex = -1; }
+
+document.getElementById('acBox').addEventListener('mousedown', e => {
+  const item = e.target.closest('.ac-item');
+  if (!item) return;
+  e.preventDefault();
+  const form = item.dataset.form;
+  document.getElementById('search').value = form;
+  hideAC();
+  doSearch(form);
+});
+
+/* ═══════════════════════════════════════════════════════
    LOAD
-═══════════════════════════════════════════ */
+═══════════════════════════════════════════════════════ */
 async function load() {
   const statusEl = document.getElementById('status');
   let text;
@@ -552,7 +539,7 @@ async function load() {
     const r = await fetch(CSV_URL);
     if (!r.ok) throw new Error(`HTTP ${r.status}`);
     text = await r.text();
-  } catch (e) {
+  } catch(e) {
     console.warn('Could not load dict.csv, using sample data.', e);
     text = SAMPLE;
     statusEl.textContent = 'Using sample data — add dict.csv to load your own.';
@@ -566,21 +553,54 @@ async function load() {
   if (q.trim()) doSearch(q);
 }
 
-/* ═══════════════════════════════════════════
+/* ═══════════════════════════════════════════════════════
    EVENTS
-═══════════════════════════════════════════ */
+═══════════════════════════════════════════════════════ */
 const searchEl = document.getElementById('search');
 const clearBtn = document.getElementById('clearBtn');
 let timer;
 
 searchEl.addEventListener('input', () => {
-  clearBtn.style.display = searchEl.value ? 'block' : 'none';
+  const v = searchEl.value;
+  clearBtn.style.display = v ? 'block' : 'none';
+  renderAC(getSuggestions(v), v.toLowerCase());
   clearTimeout(timer);
-  timer = setTimeout(() => doSearch(searchEl.value), 180);
+  timer = setTimeout(() => doSearch(v), 200);
 });
+
+searchEl.addEventListener('keydown', e => {
+  const box = document.getElementById('acBox');
+  const items = box.querySelectorAll('.ac-item');
+  if (!items.length) return;
+  if (e.key === 'ArrowDown') {
+    e.preventDefault();
+    acIndex = Math.min(acIndex + 1, items.length - 1);
+    items.forEach((el,i) => el.classList.toggle('active', i === acIndex));
+  } else if (e.key === 'ArrowUp') {
+    e.preventDefault();
+    acIndex = Math.max(acIndex - 1, -1);
+    items.forEach((el,i) => el.classList.toggle('active', i === acIndex));
+  } else if (e.key === 'Enter' && acIndex >= 0) {
+    e.preventDefault();
+    const form = items[acIndex].dataset.form;
+    searchEl.value = form;
+    hideAC();
+    doSearch(form);
+  } else if (e.key === 'Escape') {
+    hideAC();
+  }
+});
+
+searchEl.addEventListener('blur', () => setTimeout(hideAC, 150));
+searchEl.addEventListener('focus', () => {
+  const v = searchEl.value;
+  if (v.length >= 2) renderAC(getSuggestions(v), v.toLowerCase());
+});
+
 clearBtn.addEventListener('click', () => {
   searchEl.value = '';
   clearBtn.style.display = 'none';
+  hideAC();
   searchEl.focus();
   doSearch('');
 });
